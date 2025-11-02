@@ -1,2 +1,30 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script lang="ts">
+    import { Button } from "$lib/components/ui/button";
+</script>
+
+<div class="flex h-screen w-full flex-col bg-white">
+    <header class="flex items-center justify-between p-4 md:p-6">
+        <h1 class="text-2xl font-bold text-slate-800">Homeryland</h1>
+        <div class="flex items-center space-x-2">
+            <a href="/register">
+                <Button variant="ghost" class="w-24">Sign Up</Button>
+            </a>
+            <a href="/login">
+                <Button class="w-24">Login</Button>
+            </a>
+        </div>
+    </header>
+    <main class="flex flex-1 flex-col items-center justify-center text-center">
+        <div class="space-y-4">
+            <h2
+                class="text-4xl font-bold tracking-tighter text-slate-800 sm:text-5xl md:text-6xl"
+            >
+                Secure & Fast Authentication
+            </h2>
+            <p class="text-slate-600 md:text-xl">
+                Built with Svelte and Axum for a seamless and performant user
+                experience.
+            </p>
+        </div>
+    </main>
+</div>

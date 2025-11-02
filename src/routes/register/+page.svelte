@@ -8,7 +8,7 @@
 <div class="grid place-items-center h-screen">
     <Card.Root class="w-full max-w-sm">
         <Card.Header>
-            <Card.Title>Sign in to Homeryland</Card.Title>
+            <Card.Title>Sign up to Homeryland</Card.Title>
         </Card.Header>
         <Card.Content>
             <form>
