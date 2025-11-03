@@ -22,8 +22,17 @@
                 Secure & Fast Authentication
             </h2>
             <p class="text-slate-600 md:text-xl">
-                Built with Svelte and Axum for a seamless and performant user
-                experience.
+                Built with <a
+                    href="https://svelte.dev"
+                    target="_blank"
+                    class="underline">Svelte</a
+                >
+                and
+                <a
+                    href="https://github.com/tokio-rs/axum"
+                    target="_blank"
+                    class="underline">Axum</a
+                > for a seamless and performant user experience.
             </p>
         </div>
     </main>
