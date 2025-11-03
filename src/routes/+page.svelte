@@ -3,17 +3,15 @@
 </script>
 
 <div class="flex h-screen w-full flex-col bg-white">
-    <header class="flex items-center justify-between p-4 md:p-6">
-        <h1 class="text-2xl font-bold text-slate-800">Homeryland</h1>
-        <div class="flex items-center space-x-2">
-            <a href="/register">
-                <Button variant="ghost" class="w-24">Sign Up</Button>
-            </a>
-            <a href="/login">
-                <Button class="w-24">Login</Button>
-            </a>
-        </div>
-    </header>
+    <div class="flex justify-end p-4 md:p-6 space-x-2">
+        <a href="/register">
+            <Button variant="ghost" class="w-24">Sign Up</Button>
+        </a>
+        <a href="/login">
+            <Button class="w-24">Login</Button>
+        </a>
+    </div>
+
     <main class="flex flex-1 flex-col items-center justify-center text-center">
         <div class="space-y-4">
             <h2

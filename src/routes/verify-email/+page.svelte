@@ -10,7 +10,7 @@
     import { fade } from "svelte/transition";
 
     let email = "";
-    let password = "";
+    let token = "";
     const error = writable("");
     const success = writable("");
     const loading = writable(false);
@@ -19,45 +19,28 @@
         setTimeout(() => store.set(""), ms);
     }
 
-    async function handleLogin() {
-        error.set("");
-        success.set("");
-        loading.set(true);
+    async function handleVerifyEmail() {
         try {
             const response = await fetch(
-                "http://localhost:7878/api/v1/auth/login",
+                "http://localhost:7878/api/v1/auth/verify-email",
                 {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
                     },
-                    body: JSON.stringify({ email, password }),
+                    body: JSON.stringify({ email, email_token: token }),
                     credentials: "include",
                 },
             );
+
             const data = await response.json();
+
             if (data.success) {
-                if (data.success.data.need_verification) {
-                    success.set(
-                        data.success.message || "Registration successful",
-                    );
-                    autoClear(success);
-                    setTimeout(
-                        () => (window.location.href = "/verify-email"),
-                        1500,
-                    );
-                } else {
-                    success.set(
-                        data.success.message || "Need to verify your email",
-                    );
-                    autoClear(success);
-                    setTimeout(
-                        () => (window.location.href = "/dashboard"),
-                        1500,
-                    );
-                }
+                success.set(data.success.message || "Verification successful");
+                autoClear(success);
+                setTimeout(() => (window.location.href = "/login"), 1500);
             } else if (data.error) {
-                error.set(data.error.message || "Registration failed");
+                error.set(data.error.message || "Verification failed");
                 autoClear(error);
             } else {
                 error.set("Unexpected server response");
@@ -75,10 +58,8 @@
 <div class="grid place-items-center h-screen">
     <Card.Root class="w-full max-w-sm">
         <Card.Header>
-            <Card.Title>Login to your account</Card.Title>
-            <Card.Action>
-                <Button variant="link" href="/register">Sign Up</Button>
-            </Card.Action>
+            <Card.Title>Verification</Card.Title>
+            <Card.Description></Card.Description>
         </Card.Header>
         <Card.Content>
             <form>
@@ -95,27 +76,27 @@
                     </div>
                     <div class="grid gap-2">
                         <div class="flex items-center">
-                            <Label for="password">Password</Label>
+                            <Label for="password">Verification token</Label>
                             <a
                                 href="##"
                                 class="ml-auto inline-block text-sm underline-offset-4 hover:underline"
                             >
-                                Forgot your password?
+                                Haven't received it?
                             </a>
                         </div>
                         <Input
-                            id="password"
-                            type="password"
+                            id="token"
+                            type="text"
                             required
-                            bind:value={password}
+                            bind:value={token}
                         />
                     </div>
                 </div>
             </form>
         </Card.Content>
         <Card.Footer class="flex-col gap-2">
-            <Button type="submit" class="w-full" onclick={handleLogin}
-                >Login</Button
+            <Button type="submit" class="w-full" onclick={handleVerifyEmail}
+                >Verify</Button
             >
         </Card.Footer>
     </Card.Root>
