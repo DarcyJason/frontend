@@ -16,4 +16,6 @@
     </a>
 </header>
 
-{@render children()}
+<div class="grid place-items-center h-screen">
+    {@render children()}
+</div>

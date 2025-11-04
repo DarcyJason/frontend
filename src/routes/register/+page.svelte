@@ -65,92 +65,88 @@
     }
 </script>
 
-<div class="grid place-items-center h-screen">
-    <Card.Root class="w-full max-w-sm">
-        <Card.Header>
-            <Card.Title>Sign up to Homeryland</Card.Title>
-        </Card.Header>
-        <Card.Content>
-            <form>
-                <div class="flex flex-col gap-6">
-                    <div class="grid gap-2">
-                        <label for="username">Username</label>
-                        <Input
-                            id="username"
-                            type="text"
-                            placeholder="Username"
-                            required
-                            bind:value={username}
-                        />
-                    </div>
-                    <div class="grid gap-2">
-                        <Label for="email">Email</Label>
-                        <Input
-                            id="email"
-                            type="email"
-                            placeholder="user@example.com"
-                            required
-                            bind:value={email}
-                        />
-                    </div>
-                    <div class="grid gap-2">
-                        <div class="flex items-center">
-                            <Label for="password">Password</Label>
-                        </div>
-                        <Input
-                            id="password"
-                            type="password"
-                            required
-                            bind:value={password}
-                        />
-                    </div>
-                    <div class="grid gap-2">
-                        <div class="flex items-center">
-                            <label for="confirm_password"
-                                >Confirm Password</label
-                            >
-                        </div>
-                        <Input
-                            id="confirm_password"
-                            type="password"
-                            required
-                            bind:value={confirmPassword}
-                        />
-                        <a
-                            href="/login"
-                            class="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                        >
-                            Already have an account?
-                        </a>
-                    </div>
+<Card.Root class="w-full max-w-sm">
+    <Card.Header>
+        <Card.Title>Sign up to Homeryland</Card.Title>
+    </Card.Header>
+    <Card.Content>
+        <form>
+            <div class="flex flex-col gap-6">
+                <div class="grid gap-2">
+                    <label for="username">Username</label>
+                    <Input
+                        id="username"
+                        type="text"
+                        placeholder="Username"
+                        required
+                        bind:value={username}
+                    />
                 </div>
-            </form>
-        </Card.Content>
-        <Card.Footer class="flex-col gap-2">
-            <Button type="submit" class="w-full" onclick={handleRegister}
-                >Sign up</Button
-            >
-        </Card.Footer>
-    </Card.Root>
-
-    <div class="fixed bottom-6 right-6 flex flex-col gap-2 z-50">
-        {#if $success}
-            <div in:fade out:fade>
-                <Alert.Root>
-                    <CheckCircle2Icon />
-                    <Alert.Title>{$success}</Alert.Title>
-                </Alert.Root>
+                <div class="grid gap-2">
+                    <Label for="email">Email</Label>
+                    <Input
+                        id="email"
+                        type="email"
+                        placeholder="user@example.com"
+                        required
+                        bind:value={email}
+                    />
+                </div>
+                <div class="grid gap-2">
+                    <div class="flex items-center">
+                        <Label for="password">Password</Label>
+                    </div>
+                    <Input
+                        id="password"
+                        type="password"
+                        required
+                        bind:value={password}
+                    />
+                </div>
+                <div class="grid gap-2">
+                    <div class="flex items-center">
+                        <label for="confirm_password">Confirm Password</label>
+                    </div>
+                    <Input
+                        id="confirm_password"
+                        type="password"
+                        required
+                        bind:value={confirmPassword}
+                    />
+                    <a
+                        href="/login"
+                        class="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+                    >
+                        Already have an account?
+                    </a>
+                </div>
             </div>
-        {/if}
+        </form>
+    </Card.Content>
+    <Card.Footer class="flex-col gap-2">
+        <Button type="submit" class="w-full" onclick={handleRegister}
+            >Sign up</Button
+        >
+    </Card.Footer>
+</Card.Root>
 
-        {#if $error}
-            <div in:fade out:fade>
-                <Alert.Root variant="destructive">
-                    <AlertCircleIcon />
-                    <Alert.Title>Error</Alert.Title>
-                    <Alert.Description>{$error}</Alert.Description>
-                </Alert.Root>
-            </div>
-        {/if}
-    </div>
+<div class="fixed bottom-6 right-6 flex flex-col gap-2 z-50">
+    {#if $success}
+        <div in:fade out:fade>
+            <Alert.Root>
+                <CheckCircle2Icon />
+                <Alert.Title>{$success}</Alert.Title>
+            </Alert.Root>
+        </div>
+    {/if}
+
+    {#if $error}
+        <div in:fade out:fade>
+            <Alert.Root variant="destructive">
+                <AlertCircleIcon />
+                <Alert.Title>Error</Alert.Title>
+                <Alert.Description>{$error}</Alert.Description>
+            </Alert.Root>
+        </div>
+    {/if}
 </div>
