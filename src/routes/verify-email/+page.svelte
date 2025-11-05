@@ -55,7 +55,10 @@
     }
 </script>
 
-<div class="grid place-items-center h-screen">
+<div
+    class="grid place-items-center h-screen bg-cover bg-center"
+    style="background-image: url('verify-email.jpg');"
+>
     <Card.Root class="w-full max-w-sm">
         <Card.Header>
             <Card.Title>Verification</Card.Title>
