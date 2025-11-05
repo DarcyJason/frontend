@@ -2,16 +2,15 @@
     import { Button } from "$lib/components/ui/button";
 </script>
 
-<div class="flex h-screen w-full flex-col bg-white">
+<div
+    class="flex h-screen w-full flex-col bg-cover bg-center"
+    style="background-image: url('index.jpg');"
+>
     <div class="flex justify-end p-4 md:p-6 space-x-2">
         <a href="/register">
             <Button variant="ghost" class="w-24">Sign Up</Button>
-        </a>
-        <a href="/login">
-            <Button class="w-24">Login</Button>
-        </a>
+        </a> <a href="/login"> <Button class="w-24">Login</Button> </a>
     </div>
-
     <main class="flex flex-1 flex-col items-center justify-center text-center">
         <div class="space-y-4">
             <h2

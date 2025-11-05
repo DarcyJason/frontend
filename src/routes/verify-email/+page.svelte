@@ -55,63 +55,70 @@
     }
 </script>
 
-<Card.Root class="w-full max-w-sm">
-    <Card.Header>
-        <Card.Title>Verification</Card.Title>
-        <Card.Description></Card.Description>
-    </Card.Header>
-    <Card.Content>
-        <form>
-            <div class="flex flex-col gap-6">
-                <div class="grid gap-2">
-                    <Label for="email">Email</Label>
-                    <Input
-                        id="email"
-                        type="email"
-                        placeholder="user@example.com"
-                        required
-                        bind:value={email}
-                    />
-                </div>
-                <div class="grid gap-2">
-                    <div class="flex items-center">
-                        <Label for="password">Verification token</Label>
-                        <a
-                            href="##"
-                            class="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                        >
-                            Haven't received it?
-                        </a>
+<div class="grid place-items-center h-screen">
+    <Card.Root class="w-full max-w-sm">
+        <Card.Header>
+            <Card.Title>Verification</Card.Title>
+            <Card.Description></Card.Description>
+        </Card.Header>
+        <Card.Content>
+            <form>
+                <div class="flex flex-col gap-6">
+                    <div class="grid gap-2">
+                        <Label for="email">Email</Label>
+                        <Input
+                            id="email"
+                            type="email"
+                            placeholder="user@example.com"
+                            required
+                            bind:value={email}
+                        />
                     </div>
-                    <Input id="token" type="text" required bind:value={token} />
+                    <div class="grid gap-2">
+                        <div class="flex items-center">
+                            <Label for="password">Verification token</Label>
+                            <a
+                                href="##"
+                                class="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+                            >
+                                Haven't received it?
+                            </a>
+                        </div>
+                        <Input
+                            id="token"
+                            type="text"
+                            required
+                            bind:value={token}
+                        />
+                    </div>
                 </div>
+            </form>
+        </Card.Content>
+        <Card.Footer class="flex-col gap-2">
+            <Button type="submit" class="w-full" onclick={handleVerifyEmail}
+                >Verify</Button
+            >
+        </Card.Footer>
+    </Card.Root>
+
+    <div class="fixed bottom-6 right-6 flex flex-col gap-2 z-50">
+        {#if $success}
+            <div in:fade out:fade>
+                <Alert.Root>
+                    <CheckCircle2Icon />
+                    <Alert.Title>{$success}</Alert.Title>
+                </Alert.Root>
             </div>
-        </form>
-    </Card.Content>
-    <Card.Footer class="flex-col gap-2">
-        <Button type="submit" class="w-full" onclick={handleVerifyEmail}
-            >Verify</Button
-        >
-    </Card.Footer>
-</Card.Root>
+        {/if}
 
-<div class="fixed bottom-6 right-6 flex flex-col gap-2 z-50">
-    {#if $success}
-        <div in:fade out:fade>
-            <Alert.Root>
-                <CheckCircle2Icon />
-                <Alert.Title>{$success}</Alert.Title>
-            </Alert.Root>
-        </div>
-    {/if}
-
-    {#if $error}
-        <div in:fade out:fade>
-            <Alert.Root variant="destructive">
-                <AlertCircleIcon />
-                <Alert.Title>Error</Alert.Title>
-                <Alert.Description>{$error}</Alert.Description>
-            </Alert.Root>
-        </div>
-    {/if}
+        {#if $error}
+            <div in:fade out:fade>
+                <Alert.Root variant="destructive">
+                    <AlertCircleIcon />
+                    <Alert.Title>Error</Alert.Title>
+                    <Alert.Description>{$error}</Alert.Description>
+                </Alert.Root>
+            </div>
+        {/if}
+    </div>
 </div>
