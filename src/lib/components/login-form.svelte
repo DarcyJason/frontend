@@ -5,7 +5,6 @@
         Field,
         FieldLabel,
         FieldDescription,
-        FieldSeparator,
     } from "$lib/components/ui/field/index.js";
     import { Input } from "$lib/components/ui/input/index.js";
     import { Button } from "$lib/components/ui/button/index.js";
@@ -29,6 +28,7 @@
     function autoClear(store: typeof error | typeof success, ms = 5000) {
         setTimeout(() => store.set(""), ms);
     }
+
     async function handleLogin() {
         error.set("");
         success.set("");
@@ -54,7 +54,7 @@
                     autoClear(success);
                     setTimeout(
                         () => (window.location.href = "/verify-email"),
-                        1500,
+                        3000,
                     );
                 } else {
                     success.set(
@@ -63,7 +63,7 @@
                     autoClear(success);
                     setTimeout(
                         () => (window.location.href = "/dashboard"),
-                        1500,
+                        3000,
                     );
                 }
             } else if (data.error) {
@@ -98,7 +98,7 @@
                         <Input
                             id="email-{id}"
                             type="email"
-                            placeholder="m@example.com"
+                            placeholder="nobody@example.com"
                             required
                             bind:value={email}
                         />
@@ -108,7 +108,7 @@
                             <FieldLabel for="password-{id}">Password</FieldLabel
                             >
                             <a
-                                href="##"
+                                href="/forget-password"
                                 class="ml-auto text-sm underline-offset-2 hover:underline"
                             >
                                 Forgot your password?

@@ -38,7 +38,7 @@
             if (data.success) {
                 success.set(data.success.message || "Verification successful");
                 autoClear(success);
-                setTimeout(() => (window.location.href = "/login"), 1500);
+                setTimeout(() => (window.location.href = "/login"), 3000);
             } else if (data.error) {
                 error.set(data.error.message || "Verification failed");
                 autoClear(error);
@@ -72,7 +72,7 @@
                         <Input
                             id="email"
                             type="email"
-                            placeholder="user@example.com"
+                            placeholder="nobody@example.com"
                             required
                             bind:value={email}
                         />

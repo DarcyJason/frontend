@@ -49,7 +49,7 @@
             if (data.success) {
                 success.set(data.success.message || "Registration successful");
                 autoClear(success);
-                setTimeout(() => (window.location.href = "/login"), 1500);
+                setTimeout(() => (window.location.href = "/login"), 3000);
             } else if (data.error) {
                 error.set(data.error.message || "Registration failed");
                 autoClear(error);
@@ -89,7 +89,7 @@
             <Input
                 id="email"
                 type="email"
-                placeholder="m@example.com"
+                placeholder="nobody@example.com"
                 required
                 bind:value={email}
             />
