@@ -1,7 +1,7 @@
 <script module></script>
 
 <script lang="ts">
-    import SignupForm from "$lib/components/register-form.svelte";
+    import SignupForm from "$lib/components/auth/register-form.svelte";
 </script>
 
 <div class="grid min-h-svh lg:grid-cols-2">
